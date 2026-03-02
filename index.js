@@ -3,6 +3,9 @@ import cors from "cors"
 import db from "./config/db.config.js"
 import userRoute from "./routes/user.route.js"
 import loginRoute from "./routes/login.route.js"
+import workoutRouter from "./routes/workout.route.js"
+import fileRouter from "./routes/files.routes.js"
+
 
 const app = express()
 app.use(express.json())
@@ -18,6 +21,8 @@ app.get("/num",(req,res) => {
 
 app.use("/user", userRoute)
 app.use("/v1", loginRoute)
+app.use("/workout",workoutRouter)
+app.use("/file", fileRouter)
 
 db.then(
 app.listen(8000 , ()=>{

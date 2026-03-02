@@ -28,6 +28,8 @@ export const auth = async(req,res,next) =>{
                 return res.status(400).json({message : "user not authorizes"})
             }
             req.user = user
+
+            console.log("auth user" + req.user)
             next()
 
         }
