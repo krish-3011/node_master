@@ -1,6 +1,7 @@
 import { sendEmail } from "../config/nodeMailer.config.js";
 import { generateOtp } from "../config/otp.config.js";
 import Otp from "../model/otp.model.js";
+import cron from "node-cron";
 
 
 
@@ -21,6 +22,11 @@ export const createOtp = async (req,res) => {
         res.status(500).json({success : false , message : "Failed to create OTP" , error : err.message})
     }
 }
+
+cron.schedule("*/1 * * * *", async () => {
+
+  console.log("Expired OTPs cleared");
+});
 
 export const verifyOtp = async(req,res) => {
     const {email, otp} = req.body;
