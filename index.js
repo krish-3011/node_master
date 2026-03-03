@@ -5,6 +5,7 @@ import userRoute from "./routes/user.route.js"
 import loginRoute from "./routes/login.route.js"
 import workoutRouter from "./routes/workout.route.js"
 import fileRouter from "./routes/files.routes.js"
+import mailRouter from "./routes/mail.routes.js"
 
 
 const app = express()
@@ -23,6 +24,7 @@ app.use("/user", userRoute)
 app.use("/v1", loginRoute)
 app.use("/workout",workoutRouter)
 app.use("/file", fileRouter)
+app.use("/mail", mailRouter)
 
 db.then(
 app.listen(8000 , ()=>{
